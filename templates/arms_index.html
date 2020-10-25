@@ -1,0 +1,61 @@
+<b><a href="<{$xoops_url}>"><{$xoops_sitename}></a> :: <a href="<{$xoops_url}>/modules/arms"><{$xoops_pagetitle}></a> :: Index</b>
+<{section name=cats loop=$arms_cats}>
+  <{if $arms_config.empty_sec}>
+    <table width="100%" class="item" cellspacing="0" cellpadding="0">
+      <tr>
+        <th align="center" colspan="2"><{$arms_cats[cats].title}></th>
+      </tr>
+    <{section name=secs loop=$arms_cats[cats].secs}>
+      <tr>
+        <td class="even" width="80%">
+          <b><a href="<{$xoops_url}>/modules/arms/view.php?w=sec&idx=<{$arms_cats[cats].secs[secs].id}>"><{$arms_cats[cats].secs[secs].title}></a></b>
+          <br><{$arms_cats[cats].secs[secs].desc}>
+          <br><span style="font-size:smaller;"><b><{$arms_lang.moderators}>: </b>
+          <{section name=mods loop=$arms_cats[cats].secs[secs].mods}>
+            <a href="<{$xoops_url}>/userinfo.php?uid=<{$arms_cats[cats].secs[secs].mods[mods].uid}>"><{$arms_cats[cats].secs[secs].mods[mods].username}></a>&nbsp;
+          <{/section}>
+          </span>
+        </td>
+        <td align="center" class="odd" style="vertical-align: middle;" width="20%"><{$arms_cats[cats].secs[secs].art_count}></td>
+    <{/section}>
+  </table>
+  <br>
+  <{else}>
+    <{if $arms_cats[cats].arts_count > 0}>
+      <table width="100%" class="item" cellspacing="0" cellpadding="0">
+        <tr>
+          <th align="center" colspan="2"><{$arms_cats[cats].title}></th>
+        </tr>
+      <{section name=secs loop=$arms_cats[cats].secs}>
+        <{if $arms_cats[cats].secs[secs].art_count > 0}>
+          <tr>
+            <td class="even" width="80%">
+              <b><a href="<{$xoops_url}>/modules/arms/view.php?w=sec&idx=<{$arms_cats[cats].secs[secs].id}>"><{$arms_cats[cats].secs[secs].title}></a></b>
+              <br><{$arms_cats[cats].secs[secs].desc}>
+              <br><span style="font-size:smaller;"><b><{$arms_lang.moderators}>: </b>
+              <{section name=mods loop=$arms_cats[cats].secs[secs].mods}>
+                <a href="<{$xoops_url}>/userinfo.php?uid=<{$arms_cats[cats].secs[secs].mods[mods].uid}>"><{$arms_cats[cats].secs[secs].mods[mods].username}></a>&nbsp;
+              <{/section}>
+              </span>
+            </td>
+            <td align="center" class="odd" style="vertical-align: middle;" width="20%"><{$arms_cats[cats].secs[secs].art_count}></td>
+          <{/if}>
+      <{/section}>
+      </table>
+      <br>
+    <{/if}>
+  <{/if}>
+<{/section}>
+<{if $xoops_isadmin}>
+<br>
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+<tr>
+  <th align="center"><{$arms_lang.admin}></th>
+</tr>
+<tr>
+  <td colspan="2" align="center" height="20" style="vertical-align: middle;">
+    <a href="<{$xoops_url}>/modules/arms/admin/index.php?w=sections"><{$arms_lang.add_section}></a> :: <a href="view.php?w=waiting&idx=all"><{$arms_lang.waiting}> (<{$arms_waiting}>)</a>
+  </td>
+</tr>
+</table>
+<{/if}>

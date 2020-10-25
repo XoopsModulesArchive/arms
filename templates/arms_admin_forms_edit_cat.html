@@ -1,0 +1,39 @@
+<table class="outer" width="90%" cellspacing="1" align="center">
+  <tr>
+    <td colspan="2">
+      <a href="<{$xoops_url}>"><{$arms_lang.your_site}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/admin"><{$arms_lang.xoops_admin}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/modules/arms/admin"><{$arms_lang.arms_admin}></a>&nbsp;::&nbsp;
+      <{$arms_lang.edit_cat}>
+    </td>
+  </tr>
+  <form name="form_add_category" method="post" action="posting.php?w=editcat&idx=<{$arms_category.cat_id}>">
+    <tr>
+      <th align="center" colspan=2><{$arms_lang.edit_cat}></th>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><b><{$arms_lang.title}> (*):</b></td>
+      <td width="75%" class="odd">
+        <input name="cat_title" type="text" id="cat_title" size="35" value="<{$arms_category.cat_title}>">
+      </td>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><b><{$arms_lang.desc}> (*):</b></td>
+      <td width="75%" class="odd">
+        <textarea name="cat_desc" rows="8" cols="30" id="cat_desc"><{$arms_category.cat_desc}></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><b><{$arms_lang.order}>:</b></td>
+      <td width="75%" class="odd">
+        <input name="cat_order" type="text" size="3" maxlength="5" value="<{$arms_category.cat_order}>">
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2">
+        <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.submit}>">
+        <input name="btn_reset" type="reset" id="btn_reset" value="<{$arms_lang.reset}>">
+      </td>
+    </tr>
+  </form>
+</table>

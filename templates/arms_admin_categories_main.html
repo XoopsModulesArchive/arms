@@ -1,0 +1,73 @@
+<table class="outer" width="100%" border="0" cellspacing="1">
+  <tr>
+    <td>
+      <a href="<{$xoops_url}>"><{$arms_lang.your_site}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/admin"><{$arms_lang.xoops_admin}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/modules/arms/admin"><{$arms_lang.arms_admin}></a>&nbsp;::&nbsp;
+      <{$arms_lang.cats_main}>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <form name="form_add_section" method="post" action="posting.php?w=reordercat">
+        <table class="outer" width="90%" border="0" cellspacing="1" align="center">
+          <tr>
+            <th width="40%" align="center"><{$arms_lang.category}></th>
+            <th width="20%">&nbsp;</th>
+            <th width="20%">&nbsp;</th>
+            <th width="20%" align="center"><{$arms_lang.order}></th>
+          </tr>
+        <{section name=cats loop=$arms_categories}>
+        <tr>
+          <td class="even"><{$arms_categories[cats].title}></td>
+          <td class="odd" align="center"><a href="<{$xoops_url}>/modules/arms/admin/forms.php?w=editcat&idx=<{$arms_categories[cats].id}>"><{$arms_lang.edit}></a></td>
+          <td class="even" align="center"><a href="<{$xoops_url}>/modules/arms/admin/forms.php?w=deletecat&idx=<{$arms_categories[cats].id}>"><{$arms_lang.delete}></td>
+          <td class="odd" align="center"><input type="text" name="catorder<{$arms_categories[cats].id}>" size="3" maxlength="5" value="<{$arms_categories[cats].order}>"></td>
+        </tr>
+        <{/section}>
+        <tr>
+          <td align="center" colspan="4">
+            <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.submit}>">
+            <input name="btn_reset" type="reset" id="btn_reset" value="<{$arms_lang.reset}>">
+          </td>
+        </tr>
+        </table>
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <form name="form_add_category" method="post" action="posting.php?w=addcat">
+        <table class="outer" width="90%" cellspacing="1" align="center">
+          <tr>
+            <th align="center" colspan=2><{$arms_lang.add_category}></th>
+          </tr>
+          <tr>
+            <td width="25%" class="even"><b><{$arms_lang.title}> (*):</b></td>
+            <td width="75%" class="odd">
+              <input name="cat_title" type="text" id="cat_title" size="35">
+            </td>
+          </tr>
+          <tr>
+            <td width="25%" class="even"><b><{$arms_lang.desc}> (*):</b></td>
+            <td width="75%" class="odd">
+              <textarea name="cat_desc" rows="8" cols="30" id="cat_desc"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td width="25%" class="even"><b><{$arms_lang.order}>:</b><br><{$arms_lang.order_info}></td>
+            <td width="75%" class="odd">
+              <input name="cat_order" type="text" size="3" maxlength="5">
+            </td>
+          </tr>
+          <tr>
+            <td align="center" colspan="2">
+              <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.submit}>">
+              <input name="btn_reset" type="reset" id="btn_reset" value="<{$arms_lang.reset}>">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </td>
+  </tr>
+</table>

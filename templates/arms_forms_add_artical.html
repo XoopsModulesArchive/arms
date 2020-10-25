@@ -1,0 +1,47 @@
+<b><a href="<{$xoops_url}>"><{$xoops_sitename}></a> :: <a href="<{$xoops_url}>/modules/arms"><{$xoops_pagetitle}></a> :: <{$arms_lang.add_artical}></b>
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+  <form name="form_add_art" method="post" action="posting.php?w=addart">
+    <tr>
+      <th align="center" colspan="2"><{$arms_lang.add_artical}></th>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.title}> (*):</td>
+      <td width="75%" class="odd">
+        <input name="art_title" type="text" id="art_title" size="35">
+      </td>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.desc}> (*):</td>
+      <td width="75%" class="odd">
+        <textarea name="art_desc" rows="8" cols="30" id="art_desc"></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.section}> (*):</td>
+      <td width="75%" class="odd">
+        <select name="art_section">
+        <{section name=secs loop=$arms_sections}>
+          <option><{$arms_sections[secs].title}></option>
+        <{/section}>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.level}> (*):</td>
+      <td width="75%" class="odd">
+        <select name="art_level">
+        <{section name=lvl loop=$arms_levels}>
+          <option><{$arms_levels[lvl].title}></option>
+        <{/section}>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2">
+        <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.submit}>">
+        <input name="btn_reset" type="reset" id="btn_reset" value="<{$arms_lang.reset}>">
+      </td>
+    </tr>
+  </form>
+</table>
+

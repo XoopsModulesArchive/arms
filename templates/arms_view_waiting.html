@@ -1,0 +1,34 @@
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+<{section name=secs loop=$arms_waiting}>
+  <tr>
+    <th align="center"><{$arms_waiting[secs].sec_title}></th>
+  <tr>
+    <td>
+      <table width="90%" class="outer" cellspacing="0" cellpadding="0" align="center">
+      <{if $arms_waiting[secs].art_count eq 0}>
+        <tr>
+          <td class="even" align="center"><{$arms_lang.no_waiting}></td>
+        </tr>
+      <{else}>
+        <{section name=arts loop=$arms_waiting[secs].articals}>
+        <tr>
+          <td width="60%" class="even">
+            <a href="<{$xoops_url}>/modules/arms/view.php?w=art&idx=<{$arms_waiting[secs].articals[arts].art_id}>"><b><{$arms_waiting[secs].articals[arts].art_title}></b></a> <{$arms_lang.by}> <a href="<{$xoops_url}>/userinfo.php?uid=<{$arms_waiting[secs].articals[arts].uid}>"><{$arms_waiting[secs].articals[arts].uname}></a>
+          </td>
+          <td width="10%" align="center" class="odd">
+            <a href="<{$xoops_url}>/modules/arms/forms.php?w=editart&idx=<{$arms_waiting[secs].articals[arts].art_id}>"><{$arms_lang.edit}></a>
+          </td>
+          <td width="10%" align="center" class="even">
+            <a href="<{$xoops_url}>/modules/arms/forms.php?w=deleteart&idx=<{$arms_waiting[secs].articals[arts].art_id}>"><{$arms_lang.delete}></a>
+          </td>
+          <td width="20%" align="center" class="odd">
+            <a href="<{$xoops_url}>/modules/arms/forms.php?w=activateart&idx=<{$arms_waiting[secs].articals[arts].art_id}>"><img src="<{$xoops_url}>/modules/arms/images/options/activate.gif" alt="<{$arms_lang.activate}>"></a>
+          </td>
+        </tr>
+        <{/section}>
+      <{/if}>
+      </table>
+    </td>
+  </tr>
+<{/section}>
+</table>

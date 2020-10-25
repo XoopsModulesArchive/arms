@@ -1,0 +1,44 @@
+<table class="outer" width="100%" border="0" cellspacing="1">
+  <tr>
+    <td>
+      <a href="<{$xoops_url}>"><{$arms_lang.your_site}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/admin"><{$arms_lang.xoops_admin}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/modules/arms/admin"><{$arms_lang.arms_admin}></a>&nbsp;::&nbsp;
+      <{$arms_lang.arts_main}>
+    </td>
+  </tr>
+  <tr>
+    <th align="center"><{$arms_lang.stats}></th>
+  </tr>
+  <tr>
+    <td class="even"><{$arms_lang.total_arts}>: <b><{$arms_total_arts}></b></td>
+  </tr>
+  <tr>
+    <td class="odd"><{$arms_lang.waiting}>: <b><{$arms_waiting}></b>&nbsp;
+    <{if $arms_waiting > 0}>
+    [ <a href="<{$xoops_url}>/modules/arms/view.php?w=waiting&idx=all"><{$arms_lang.waiting_page}></a> ]
+    <{/if}>
+    </td>
+  </tr>
+  <tr>
+    <th align="center"><{$arms_lang.display}></th>
+  </tr>
+  <tr>
+    <td align="center" class="even">
+      <form name="form_display" method="post" action="index.php?w=displayart">
+        <input name="display_value" type="text" id="display_value" size="45">&nbsp;
+        <select name="display_what">
+          <option selected><{$arms_lang.opt_art_title}></option>
+          <option><{$arms_lang.opt_sec_name}></option>
+          <option><{$arms_lang.opt_cat_name}></option>
+          <option><{$arms_lang.opt_author}></option>
+          <option><{$arms_lang.where_part}></option>
+        </select>&nbsp;
+        <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.go}>">
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td class="odd"><{$arms_lang.display_info}></td>
+  </tr>
+</table>

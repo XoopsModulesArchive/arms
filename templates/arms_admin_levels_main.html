@@ -1,0 +1,72 @@
+<table class="outer" width="100%" border="0" cellspacing="1">
+  <tr>
+    <td>
+      <a href="<{$xoops_url}>"><{$arms_lang.your_site}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/admin"><{$arms_lang.xoops_admin}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/modules/arms/admin"><{$arms_lang.arms_admin}></a>&nbsp;::&nbsp;
+      <{$arms_lang.levels_main}>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table class="outer" width="90%" cellspacing="1">
+        <tr>
+          <th align="center" width="60%"><{$arms_lang.level}></th>
+          <th width="20%">&nbsp;</th>
+          <th width="20%">&nbsp;</th>
+        </tr>
+        <{section name=lvl loop=$arms_admin_levels}>
+        <tr>
+          <td class="even" align="center">
+          <{if $arms_admin_levels[lvl].level_image <> ""}>
+            <img src="<{$xoops_url}>/modules/arms/images/level/<{$arms_admin_levels[lvl].level_image}>"><br>
+          <{/if}>
+            <a href="<{$xoops_url}>/modules/arms/admin/forms.php?w=editlevel&idx=<{$arms_admin_levels[lvl].level_id}>"><{$arms_admin_levels[lvl].level_name}></a>
+          </td>
+          <td align="center" class="odd"><a href="<{$xoops_url}>/modules/arms/admin/forms.php?w=editlevel&idx=<{$arms_admin_levels[lvl].level_id}>"><{$arms_lang.edit}></a></td>
+          <td align="center" class="even"><a href="<{$xoops_url}>/modules/arms/admin/forms.php?w=deletelevel&idx=<{$arms_admin_levels[lvl].level_id}>"><{$arms_lang.delete}></a></td>
+        </tr>
+      <{/section}>
+    </table>
+  </tr>
+  <tr>
+    <td>
+      <form name="form_add_level" method="post" action="posting.php?w=addlevel">
+        <table class="outer" width="90%" cellspacing="1">
+          <tr>
+            <th align="center" colspan=2><{$arms_lang.add_level}></th>
+          </tr>
+          <tr>
+            <td width="25%" class="even"><{$arms_lang.title}> (*):</td>
+            <td width="75%" class="odd">
+              <input name="level_title" type="text" id="level_title" size="35">
+            </td>
+          </tr>
+          <tr>
+            <td width="25%" class="even"><{$arms_lang.desc}> (*):</td>
+            <td width="75%" class="odd">
+              <textarea name="level_desc" rows="8" cols="30" id="level_desc"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td width="25%" class="even"><{$arms_lang.image}>:</td>
+            <td width="75%" class="odd">
+              <select name="level_image">
+                <option selected>- - - - -</option>
+              <{section name=imgs loop=$arms_images}>
+                <option><{$arms_images[imgs].file_name}></option>
+              <{/section}>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" colspan="2">
+              <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.submit}>">
+              <input name="btn_reset" type="reset" id="btn_reset" value="<{$arms_lang.reset}>">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </td>
+  </tr>
+</table>

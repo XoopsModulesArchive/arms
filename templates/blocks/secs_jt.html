@@ -1,0 +1,15 @@
+<table cellspacing="0" cellpadding="0">
+  <form name="jump_to" method="post" action="posting.php?w=jumptosec">
+    <tr>
+      <td align="center">
+        <select name="jump_to_sec">
+        <{section name=secs loop=$block.arms_secs}>
+          <option><{$block.arms_secs[secs].title}></option>
+        <{/section}>
+        </select>
+        <input name="btn_submit" type="submit" id="btn_submit" value="<{$block.arms_lang.go}>">
+        <br><br>[ <a href="<{$xoops_url}>/modules/arms/index.php"><{$block.arms_lang.show_all}></a> ]
+      </td>
+    </tr>
+  </form>
+</table>

@@ -1,0 +1,30 @@
+<table cellspacing="0" cellpadding="0" class="item">
+<{section name=cats loop=$block.cats}>
+<{if $block.cats[cats].secs_count > 0}>
+  <tr>
+    <th align="center" colspan="3"><{$block.cats[cats].title}></th>
+  </tr>
+<{section name=secs loop=$block.cats[cats].secs}>
+  <tr class="<{cycle values="even,odd"}>">
+    <td width="25%" style="vertical-align: middle">
+      <a href="<{$xoops_url}>/modules/arms/view.php?w=sec&idx=<{$block.cats[cats].secs[secs].id}>"><{$block.cats[cats].secs[secs].title}></a>
+    </td>
+    <td width="55%" style="vertical-align: middle">
+    <{if $block.cats[cats].secs[secs].new_id eq -1}>
+      <{$block.arms_lang.no_arts}>
+    <{else}>
+      <a href="<{$xoops_url}>/modules/arms/view.php?w=art&idx=<{$block.cats[cats].secs[secs].new_id}>"><{$block.cats[cats].secs[secs].new_title}></a> <{$block.arms_lang.by}> <a href="<{$xoops_url}>/userinfo.php?uid=<{$block.cats[cats].secs[secs].new_uid}>"><{$block.cats[cats].secs[secs].new_uname}></a>
+    <{/if}>
+    </td>
+    <td width="20%" align="center" style="vertical-align: middle">
+    <{if $block.cats[cats].secs[secs].new_id eq -1}>
+      &nbsp;
+    <{else}>
+      <{$block.cats[cats].secs[secs].new_posttime}>
+    <{/if}>
+    </td>
+  </tr>
+<{/section}>
+<{/if}>
+<{/section}>
+</table>

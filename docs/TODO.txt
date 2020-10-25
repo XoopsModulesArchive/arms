@@ -1,0 +1,34 @@
+ArMS TODO.txt
+=============
+
++------------------------------------------+
+| FEATURE REQUEST ARE MORE THEN WELCOME!!! |
++------------------------------------------+
+
+[ FINISHED ]
+X Add categories
+X Add section images (with upload from admin) // just select box
+X Add Extra Permissions (author can allow some users (don`t need to have special
+  rank) to add/edit pages of his artical)
+X Add OnHold stamp to articals table... (while OnHold is true artical is not
+  finished (or all pages havent been posted))
+X Add search
+X Add cross section articals
+X Add comments
+X Add level images upload to admin... // just select box
+X Add Vote Log page to admin // not added to admin... no need.
+X Fit data/time format to XOOPS global settings... If someone tell me how :)
+  
+[ OPEN ]
+o Add notifications
+o Add custom BB code
+o Add Printer Friendly option
+o Add Mail To Friend option
+o Add Rate config page to admin...
+o Add View Last Update info page
+o In this version I used Copy-Paste very often. Need to build common functions
+  and adjuct code to use them...
+o Need to build my own multipage prefs system
+o Add many new display/logic/menagement functions
+o Need to add XOOPSFAQ and XOOPSNEWS integration
+o Add pools to articals (pure overkill???)

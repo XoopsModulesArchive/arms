@@ -1,0 +1,106 @@
+<table class="outer" width="100%" border="0" cellspacing="1">
+  <tr>
+    <td>
+      <a href="<{$xoops_url}>"><{$arms_lang.your_site}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/admin"><{$arms_lang.xoops_admin}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/modules/arms/admin"><{$arms_lang.arms_admin}></a>&nbsp;::&nbsp;
+      <{$arms_lang.sections_main}>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <form name="form_reorder_sections" method="post" action="posting.php?w=reordersecs">
+        <table class="outer" width="90%" cellspacing="1" align="center">
+          <tr>
+            <th align="center" width="40%"><{$arms_lang.section}></th>
+            <th width="15%">&nbsp;</th>
+            <th width="15%">&nbsp;</th>
+            <th width="10%">&nbsp;</th>
+            <th width="20%" align="center"><{$arms_lang.order}></th>
+          </tr>
+          <{section name=secs loop=$arms_admin_sections}>
+          <tr>
+            <td class="even" align="center" style="vertical-align: middle">
+            <{if $arms_admin_sections[secs].image <> ''}>
+              <img src="<{$xoops_url}>/modules/arms/images/section/<{$arms_admin_sections[secs].image}>" alt="<{$arms_admin_sections[secs].title}>"><br>
+            <{/if}>
+              <a href="<{$xoops_url}>/modules/arms/admin/forms.php?w=editsec&idx=<{$arms_admin_sections[secs].id}>"><{$arms_admin_sections[secs].title}></a>
+            </td>
+            <td align="center" class="odd" style="vertical-align: middle"><a href="<{$xoops_url}>/modules/arms/admin/forms.php?w=editsec&idx=<{$arms_admin_sections[secs].id}>"><{$arms_lang.edit}></a></td>
+            <td align="center" class="even" style="vertical-align: middle"><a href="<{$xoops_url}>/modules/arms/admin/forms.php?w=deletesec&idx=<{$arms_admin_sections[secs].id}>"><{$arms_lang.delete}></a></td>
+            <td align="center" class="odd" style="vertical-align: middle">
+            <{if $arms_admin_sections[secs].orphened}>
+              <span style="color: red"><b><{$arms_lang.orphened}></b></span>
+            <{else}>
+              &nbsp;
+            <{/if}>
+            </td>
+            <td align="center" class="even" style="vertical-align: middle">
+              <input type="text" name="secorder<{$arms_admin_sections[secs].id}>" size="3" maxlength="5" value="<{$arms_admin_sections[secs].order}>">
+            </td>
+          </tr>
+          <{/section}>
+          <td align="center" colspan="5">
+            <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.submit}>">
+            <input name="btn_reset" type="reset" id="btn_reset" value="<{$arms_lang.reset}>">
+          </td>
+        </table>
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <form name="form_add_section" method="post" action="posting.php?w=addsec">
+        <table class="outer" width="90%" cellspacing="1" align="center">
+          <tr>
+            <th align="center" colspan=2><{$arms_lang.add_section}></th>
+          </tr>
+          <tr>
+            <td width="25%" class="even"><b><{$arms_lang.title}> (*):</b></td>
+            <td width="75%" class="odd">
+              <input name="sec_title" type="text" id="sec_title" size="35">
+            </td>
+          </tr>
+          <tr>
+            <td width="25%" class="even"><b><{$arms_lang.category}> (*):</b></td>
+            <td width="75%" class="odd">
+              <select name="sec_category">
+              <{section name=cats loop=$arms_cats}>
+                <option><{$arms_cats[cats].title}></option>
+              <{/section}>
+              </select>
+            </td>
+          <tr>
+            <td width="25%" class="even"><b><{$arms_lang.desc}> (*):</b></td>
+            <td width="75%" class="odd">
+              <textarea name="sec_desc" rows="8" cols="30" id="sec_desc"></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td width="25%" class="even"><b><{$arms_lang.sec_image}> (*):</b><br><{$arms_lang.img_info}></td>
+            <td width="75%" class="odd">
+              <select name="sec_image">
+                <option selected>- - - - -</option>
+              <{section name=imgs loop=$arms_images}>
+                <option><{$arms_images[imgs].file_name}></option>
+              <{/section}>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td width="25%" class="even"><b><{$arms_lang.order}>:</b><br><{$arms_lang.order_info}></td>
+            <td width="75%" class="odd">
+              <input name="sec_order" type="text" size="3" maxlength="5">
+            </td>
+          </tr>
+          <tr>
+            <td align="center" colspan="2">
+              <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.submit}>">
+              <input name="btn_reset" type="reset" id="btn_reset" value="<{$arms_lang.reset}>">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </td>
+  </tr>
+</table>

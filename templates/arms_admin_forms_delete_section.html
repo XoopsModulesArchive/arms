@@ -1,0 +1,43 @@
+<table class="outer" width="100%" border="0" cellspacing="1">
+  <tr>
+    <td>
+      <a href="<{$xoops_url}>"><{$arms_lang.your_site}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/admin"><{$arms_lang.xoops_admin}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/modules/arms/admin"><{$arms_lang.arms_admin}></a>&nbsp;::&nbsp;
+      <{$arms_lang.delete_section}>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <form name="form_delete_section" method="post" action="posting.php?w=deletesec&idx=<{$arms_section.id}>">
+        <table class="outer" width="90%" cellspacing="1">
+          <tr>
+            <th align="center" colspan=2><{$arms_lang.delete_section}>: <{$arms_section.title}></th>
+          </tr>
+          <tr>
+            <td class="even" width="25%"><b><{$arms_lang.move_articals}> (*):</b><br><{$arms_lang.move_info}></td>
+            <td class="odd" width="75%">
+              <select name="move_to">
+              <{if $arms_other_count > 0}>
+                <{section name=other loop=$arms_other_sections}>
+                <option><{$arms_other_sections[other].title}></option>
+                <{/section}>
+              <{else}>
+                <option><{$arms_lang.op_delete}></option>
+              <{/if}>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td class="even" width="25%"><b><{$arms_lang.confirm}>:</b></td>
+            <td class="odd" width="75%"><input name="confirm" type="checkbox" id="confirm" value="confirmed"></td>
+          </tr>
+          <td align="center" colspan="2">
+            <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.submit}>">
+            <input name="btn_reset" type="reset" id="btn_reset" value="<{$arms_lang.reset}>">
+          </td>
+        </table>
+      </form>
+    </td>
+  </tr>
+</table>

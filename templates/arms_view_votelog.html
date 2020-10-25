@@ -1,0 +1,50 @@
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+  <tr>
+    <th align="center"><{$arms_lang.votelog}></th>
+  </tr>
+  <tr>
+    <td class="even">
+      <{if $arms_rate eq 1}>
+        <b><{$arms_lang.rate}>: </b><{$arms_lang.rate_1}> (1)
+      <{elseif $arms_rate eq 2}>
+        <b><{$arms_lang.rate}>: </b><{$arms_lang.rate_2}> (2)
+      <{elseif $arms_rate eq 3}>
+        <b><{$arms_lang.rate}>: </b><{$arms_lang.rate_3}> (3)
+      <{elseif $arms_rate eq 4}>
+        <b><{$arms_lang.rate}>: </b><{$arms_lang.rate_4}> (4)
+      <{elseif $arms_rate eq 5}>
+        <b><{$arms_lang.rate}>: </b><{$arms_lang.rate_5}> (5)
+      <{else}>
+        <b><{$arms_lang.rate}>: </b><{$arms_lang.no_rate}>
+      <{/if}>
+    </td>
+  </tr>
+  <tr>
+    <td class="odd"><b><{$arms_lang.total_votes}>: </b><{$arms_total_votes}></td>
+  </tr>
+</table>
+<{if $arms_show_log}>
+<br><br>
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+  <tr>
+    <th width="40%" align="center"><{$arms_lang.username}></th>
+    <th width="40%" align="center"><{$arms_lang.posttime}></th>
+    <th width="20%" align="center"><{$arms_lang.ip}></th>
+  </tr>
+<{section name=log loop=$arms_votelog}>
+  <tr>
+    <td class="even" align="center">
+      <a href="<{$xoops_url}>/userinfo.php?uid=<{$arms_votelog[log].uid}>"><{$arms_votelog[log].uname}></a>
+    </td>
+    <td class="odd" align="center"><{$arms_votelog[log].posttime}></td>
+    <td class="even" align="center">
+      <{if $arms_votelog[log].uip eq ''}>
+        &nbsp;
+      <{else}>
+        <{$arms_votelog[log].uip}>
+      <{/if}>
+    </td>
+  </tr>
+<{/section}>
+</table>
+<{/if}>

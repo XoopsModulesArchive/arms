@@ -1,0 +1,61 @@
+<form name="form_add_art" method="post" action="<{$arms_form_action}>">
+  <table width="100%" class="item" cellspacing="0" cellpadding="0">
+    <tr>
+      <th align="center" colspan="2"><{$arms_lang.add_page}></th>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.artical}></td>
+      <td width="75%" class="odd">
+        <a href="<{$xoops_url}>/modules/arms/forms.php?w=editart&idx=<{$arms_artical.art_id}>"><{$arms_artical.art_title}></a>
+      </td>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.title}> (*):</td>
+      <td width="75%" class="odd">
+        <input name="page_title" type="text" id="page_title" size="35">
+      </td>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.level}> (*):</td>
+      <td width="75%" class="odd">
+        <select name="page_level">
+        <{section name=lvl loop=$arms_levels}>
+          <option><{$arms_levels[lvl].title}></option>
+        <{/section}>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.desc}> (*):</td>
+      <td width="75%" class="odd">
+        <{$arms_page_desc}>
+      </td>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.text}> (*):</td>
+      <td width="75%" class="odd">
+        <{$arms_page_text}><{$arms_page_emotions}>
+      </td>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.order}> (*):</td>
+      <td width="75%" class="odd">
+        <input name="page_order" type="text" id="page_order" size="35" value="<{$arms_next_order}>">
+      </td>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.options}> (*):</td>
+      <td width="75%" class="odd">
+        <input name="allow_html" type="checkbox" id="allow_html" value="checked"><{$arms_lang.allow_html}><br>
+        <input name="allow_emotions" type="checkbox" id="allow_emotions" value="checked"><{$arms_lang.allow_emotions}><br>
+        <input name="allow_bbcode" type="checkbox" id="allow_bbcode" value="checked" checked><{$arms_lang.allow_bbcode}><br>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2">
+        <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.submit}>">
+        <input name="btn_reset" type="reset" id="btn_reset" value="<{$arms_lang.reset}>">
+      </td>
+    </tr>
+  </table>
+</form>

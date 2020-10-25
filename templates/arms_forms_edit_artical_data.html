@@ -1,0 +1,53 @@
+<form name="form_edit_art" method="post" action="posting.php?w=editartdata&idx=<{$arms_artical.art_id}>">
+  <table width="100%" class="item" cellspacing="0" cellpadding="0">
+    <tr>
+      <th align="center" colspan="2"><{$arms_lang.edit_artical_data}></th>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.artical}> (*):</td>
+      <td width="75%" class="odd">
+        <{$arms_artical.art_title}>
+      </td>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.title}> (*):</td>
+      <td width="75%" class="odd">
+        <input name="art_title" type="text" id="art_title" size="35" value="<{$arms_artical.art_title}>">
+      </td>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.desc}> (*):</td>
+      <td width="75%" class="odd">
+        <textarea name="art_desc" rows="8" cols="30" id="art_desc"><{$arms_artical.art_desc}></textarea>
+      </td>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.section}> (*):</td>
+      <td width="75%" class="odd">
+        <select name="art_section">
+          <option selected><{$arms_section}></option>
+        <{section name=secs loop=$arms_sections}>
+          <option><{$arms_sections[secs].title}></option>
+        <{/section}>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.level}> (*):</td>
+      <td width="75%" class="odd">
+        <select name="art_level">
+          <option selected><{$arms_level}></option>
+        <{section name=lvl loop=$arms_levels}>
+          <option><{$arms_levels[lvl].title}></option>
+        <{/section}>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td align="center" colspan="2">
+        <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.submit}>">
+        <input name="btn_reset" type="reset" id="btn_reset" value="<{$arms_lang.reset}>">
+      </td>
+    </tr>
+  </table>
+</form>

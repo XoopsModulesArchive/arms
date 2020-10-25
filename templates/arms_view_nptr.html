@@ -1,0 +1,67 @@
+<b><a href="<{$xoops_url}>"><{$xoops_sitename}></a> :: <a href="<{$xoops_url}>/modules/arms"><{$xoops_pagetitle}></a> :: <{$arms_lang.page_title}></b>
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+  <tr>
+    <th align="center" colspan="4"><{$arms_lang.page_title}></th>
+  </tr>
+  <tr>
+    <td class="odd" align="center" colspan="4"><{$arms_lang.page_info}></td>
+  </tr>
+<{section name=disp loop=$arms_display}>
+  <tr>
+    <th align="center" colspan="4">
+      <a href="<{$xoops_url}>/modules/arms/view.php?w=sec&idx=<{$arms_display[disp].sec_id}>" style="color: #FFFFFF"><{$arms_display[disp].sec_title}></a><span style="color: #FFFFFF"> :: </span><a href="<{$xoops_url}>/modules/arms/view.php?w=art&idx=<{$arms_display[disp].art_id}>" style="color: #FFFFFF"><{$arms_display[disp].art_title}></a><span style="color: #FFFFFF"> <{$arms_lang.by}> </span><a href="<{$xoops_url}>/userinfo.php?uid=<{$arms_display[disp].uid}>" style="color:#FFFFFF"><{$arms_display[disp].uname}></a>
+    </th>
+  </tr>
+  <tr>
+    <td class="odd" colspan="4">
+      <table width="100%" cellspacing="0" cellpadding="0">
+        <tr>
+        <{if $arms_display[disp].sec_image eq ''}>
+          <td><{$arms_display[disp].art_desc}></td>
+        <{else}>
+          <td width="75%"><{$arms_display[disp].art_desc}></td>
+          <td width="25%" align="center" style="vertical-align: middle">
+            <a href="<{$xoops_url}>/modules/arms/view.php?w=sec&idx=<{$arms_display[disp].sec_id}>"><img src="<{$xoops_url}>/modules/arms/images/section/<{$arms_display[disp].sec_image}>" alt="<{$arms_display[disp].sec_title}>"></a>
+          </td>
+        <{/if}>
+        </tr>
+      </table>
+    </td>
+  </tr>
+  <tr class="even">
+    <td width="25%">
+    <b><{$arms_lang.rate}>:</b>
+    <{if $arms_display[disp].art_rate eq 1}>
+      <{$arms_lang.rate_1}> (1)
+    <{elseif $arms_display[disp].art_rate eq 2}>
+      <{$arms_lang.rate_2}> (2)
+    <{elseif $arms_display[disp].art_rate eq 3}>
+      <{$arms_lang.rate_3}> (3)
+    <{elseif $arms_display[disp].art_rate eq 4}>
+      <{$arms_lang.rate_4}> (4)
+    <{elseif $arms_display[disp].art_rate eq 5}>
+      <{$arms_lang.rate_5}> (5)
+    <{else}>
+      <{$arms_lang.no_rate}>
+    <{/if}>
+    </td>
+    <td width="25%" align="center"><b><{$arms_lang.level}>: </b><a href="<{$xoops_url}>/modules/arms/view.php?w=level&idx=<{$arms_display[disp].level_id}>"><{$arms_display[disp].level_title}></td>
+    <td width="25%" align="center"><b><{$arms_lang.comments}>: </b><{$arms_display[disp].comments}></td>
+    <td width="25%" align="right"><{$arms_display[disp].posttime}></td>
+  </tr>
+<{if $arms_display[disp].perms.can_edit_art or $arms_display[disp].perms.can_delete_art or $arms_display[disp].perms.can_view_uip}>
+  <tr>
+    <td class="odd" align="center" colspan="4">
+    <{if $arms_display[disp].perms.can_edit_art}>
+      <a href="<{$xoops_url}>/modules/arms/forms.php?w=editart&idx=<{$arms_display[disp].art_id}>"><img src="<{$xoops_url}>/modules/arms/images/options/edit.gif" alt="<{$arms_lang.edit}>"></a>
+    <{/if}>
+    <{if $arms_display[disp].perms.can_delete_art}>
+      <a href="<{$xoops_url}>/modules/arms/forms.php?w=deleteart&idx=<{$arms_display[disp].art_id}>"><img src="<{$xoops_url}>/modules/arms/images/options/delete.gif" alt="<{$arms_lang.delete}>"></a>
+    <{/if}>
+    <{if $arms_display[disp].perms.can_view_uip}>
+      <img src="<{$xoops_url}>/modules/arms/images/options/ip.gif" alt="<{$arms_lang.ip}>: <{$arms_display[disp].uip}>">
+    <{/if}>
+    </td>
+<{/if}>
+<{/section}>
+</table>

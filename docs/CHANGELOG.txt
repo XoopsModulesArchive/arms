@@ -1,0 +1,102 @@
+ArMS CHANGELOG.txt
+==================
+
+================================================================================
+= ArMS 0.4                                                                     =
+================================================================================
+
+  Comments:
+  =========
+
+  Just a minor reconstruction
+
+  Bugs and changes
+  ================
+
+  - BUG: $xoopsTpl->debugging = true; (index.php line 85) commented
+  - BUG: Section moderators are now displayed correctly
+  - BUG: Article comments are now deleted when you delete article (in ArMS 0.3
+         they were left in database even if article is deleted).
+  - BUG: Crossposted articles counting fixed
+  - BUG: Admin can edit all articles
+  
+  - CHANGE - After sucessfull admin operation you are redirected to apropriate
+             page.
+  - CHANGE - Rating can be enabled or disabled
+             
+  New Stuff
+  =========
+  - Data description update (more info on Update ArMS page)
+  - Rating - Enabled option added to preferences
+  - Rating - Display only formed rates option added to prefs
+  - Max crossposting section option added to preferences
+  - Max extra permissions per article added to preferences
+  - Show Empty Categories/Sections option added to preferences
+  
+  For more info about new prefs take a look at description on Preferences page.
+
+================================================================================
+= ArMS 0.3                                                                     =
+================================================================================
+
+ Comments:
+ =========
+
+ As long as zero is in front of ArMS version ArMS is in beta...
+
+ I use ArMS myself! Since I wrote ArMS 0.2 I noticed some things are missing.
+ This version should do 75% of what I want from ArMS. Also, I think some of
+ ArMS 0.3 features are pure overkill so I added an extra options to admin if you
+ don`t need them (or don`t know what to do with them).
+
+ Lang changes are marked ( comment at the end of line ).
+
+ If you used ArMS 0.2 then you`ll need to wait for ArMS 0.4. Simple Update from
+ Module admin wont work (database changes :( ). I started codding ArMS update
+ routine (puts data to temp table, and after reinstallation of ArMS puts them
+ in new tables). I realy don`t have time to finish it... Please, try to wait one
+ week, and you`ll have ArMS 0.4 (bug fixes for ArMS 0.3 + update system)
+
+ How to update?
+ ==============
+
+ Wait for ArMS 0.4... :(
+
+ New features
+ ============
+ - new data structure
+   = categories
+   = sections
+   = articles
+   = pages
+ - articles can be on-hold
+ - article author can allow other user access to his articles. selected users
+   can:
+   = edit pages and/or
+   = add pages and/or
+   = delete pages
+   no special ranks needed
+ - new pages - popular, top rated, new (recent)
+ - extra feature - cross section articles :) Cool stuff!
+ - finally I added a few blocks
+ - also finally comments added
+ - search added (articles and pages)
+ - added some more admin functions
+ - finally I made ArMS admin index
+ - added votelog
+ - category, section and page reordering is now on "the XOOPS way".
+ - some bugs fixed
+
+ Dadatabase changes
+ ==================
+ - cat_id and sec_image fields added to arms_sections table
+ - art_onhold field added to arms_articals table
+ - table arms_categories added
+ - table arms_permissions added
+ - table arms_cross_section
+
+================================================================================
+= ArMS 0.2                                                                     =
+================================================================================
+
+ First version.

@@ -1,0 +1,21 @@
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+  <tr>
+    <th colspan="2" align="center"><{$arms_lang.level}></td>
+  </tr>
+  <tr>
+    <td class="even" width="25%"><{$arms_lang.title}>:</td>
+    <td class="odd" width="75%"><b><{$arms_level.level_name}></b></td>
+  </tr>
+  <tr>
+    <td class="even" width="25%"><{$arms_lang.desc}>:</td>
+    <td class="odd" width="75%"><{$arms_level.level_desc}></td>
+  </tr>
+  <tr>
+    <td class="even" width="25%"><{$arms_lang.image}>:</td>
+    <td class="odd" width="75%">
+    <{if not ($arms_level.level_image eq '')}>
+      <img src="<{$xoops_url}>/modules/arms/upload/levels/<{$arms_level.level_image}>">
+    <{/if}>
+    </td>
+  </tr>
+</table>

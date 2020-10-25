@@ -1,0 +1,28 @@
+<table class="outer" width="100%" border="0" cellspacing="1">
+  <tr>
+    <td>
+      <a href="<{$xoops_url}>"><{$arms_lang.your_site}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/admin"><{$arms_lang.xoops_admin}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/modules/arms/admin"><{$arms_lang.arms_admin}></a>&nbsp;::&nbsp;
+      <{$arms_lang.update}>
+    </td>
+  </tr>
+  <tr>
+    <th align="center"><{$arms_lang.update}></th>
+  </tr>
+  <form name="form_update" method="post" action="posting.php?w=update">
+    <tr>
+      <td class="even" align="center">
+        <select name="update_ver">
+        <{section name=vers loop=$arms_updates}>
+          <option><{$arms_updates[vers].title}></option>
+        <{/section}>
+        </select>
+        <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.go}>">
+      </td>
+    </tr>
+  </form>
+  <tr>
+    <td class="odd"><{$arms_lang.update_info}></td>
+  </tr>
+</table>

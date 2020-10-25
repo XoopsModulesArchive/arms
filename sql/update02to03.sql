@@ -1,0 +1,82 @@
+# ==============================================================================
+# ArMS 0.2 to ArMS 0.3 data definition update
+# ==============================================================================
+
+CREATE TABLE IF NOT EXISTS arms_categories (
+    cat_id    SMALLINT(3) UNSIGNED DEFAULT "0" NOT NULL AUTO_INCREMENT,
+    cat_title VARCHAR(100)         DEFAULT ""  NOT NULL,
+    cat_desc  TEXT                 DEFAULT ""  NOT NULL,
+    cat_order SMALLINT(3) UNSIGNED DEFAULT ""  NOT NULL,
+    PRIMARY KEY (cat_id)
+)
+    ENGINE = ISAM;
+
+
+CREATE TABLE IF NOT EXISTS arms_permissions (
+    p_id             INT(6) UNSIGNED DEFAULT "0" NOT NULL AUTO_INCREMENT,
+    art_id           INT(6) UNSIGNED DEFAULT "0" NOT NULL,
+    uid              INT(5) UNSIGNED DEFAULT "0" NOT NULL,
+    added_by         INT(5) UNSIGNED DEFAULT "0" NOT NULL,
+    can_edit_pages   TINYINT(1)      DEFAULT "1" NOT NULL,
+    can_add_pages    TINYINT(1)      DEFAULT "0" NOT NULL,
+    can_delete_pages TINYINT(1)      DEFAULT "0" NOT NULL,
+
+    can_add_files    TINYINT(1)      DEFAULT "0" NOT NULL,
+    can_delete_files TINYINT(1)      DEFAULT "0" NOT NULL,
+    PRIMARY KEY (p_id)
+)
+    ENGINE = ISAM;
+
+CREATE TABLE IF NOT EXISTS arms_cross_section (
+    cs_id  INT(9) UNSIGNED      DEFAULT "0" NOT NULL AUTO_INCREMENT,
+    art_id INT(6) UNSIGNED      DEFAULT "0" NOT NULL,
+    sec_id SMALLINT(3) UNSIGNED DEFAULT "0" NOT NULL,
+    PRIMARY KEY (cs_id)
+)
+    ENGINE = ISAM;
+
+ALTER TABLE arms_sections
+    ADD cat_id    SMALLINT(3) UNSIGNED DEFAULT "0" NOT NULL,
+    ADD sec_image VARCHAR(255)         DEFAULT ""  NOT NULL,
+    MODIFY sec_id SMALLINT(3) UNSIGNED DEFAULT "0" NOT NULL AUTO_INCREMENT,
+    MODIFY sec_order SMALLINT(3) UNSIGNED DEFAULT "1" NOT NULL;
+
+ALTER TABLE arms_articals_levels
+    MODIFY level_id SMALLINT(3) UNSIGNED DEFAULT "" NOT NULL AUTO_INCREMENT;
+
+ALTER TABLE arms_articals
+    ADD art_onhold TINYINT(1) DEFAULT "1" NOT NULL,
+    MODIFY art_id INT(5) UNSIGNED DEFAULT "0" NOT NULL AUTO_INCREMENT,
+    MODIFY sec_id SMALLINT(3) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY level_id SMALLINT(3) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY uid INT(5) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY art_updatecount SMALLINT(3) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY art_posttime INT(11) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY art_lastupdate INT(11) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY art_lastupdateby INT(5) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY art_ratetotal MEDIUMINT(8) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY art_ratecount MEDIUMINT(8) UNSIGNED DEFAULT "1" NOT NULL,
+    MODIFY art_views INT(11) UNSIGNED DEFAULT "0" NOT NULL;
+
+ALTER TABLE arms_pages
+    MODIFY page_id INT(6) UNSIGNED DEFAULT "0" NOT NULL AUTO_INCREMENT,
+    MODIFY page_order SMALLINT(3) UNSIGNED DEFAULT "1" NOT NULL,
+    MODIFY art_id INT(5) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY level_id SMALLINT(3) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY uid INT(5) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY page_updatecount SMALLINT(3) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY page_posttime INT(11) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY page_lastupdate INT(11) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY page_lastupdateby INT(5) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY page_views INT(11) UNSIGNED DEFAULT "0" NOT NULL;
+
+ALTER TABLE arms_votelog
+    MODIFY vote_id INT(5) UNSIGNED DEFAULT "0" NOT NULL AUTO_INCREMENT,
+    MODIFY vote_time INT(11) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY art_id INT(5) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY uid INT(5) UNSIGNED DEFAULT "0" NOT NULL;
+
+ALTER TABLE arms_moderators
+    MODIFY mod_id SMALLINT(3) UNSIGNED DEFAULT "0" NOT NULL AUTO_INCREMENT,
+    MODIFY uid INT(5) UNSIGNED DEFAULT "0" NOT NULL,
+    MODIFY sec_id SMALLINT(3) UNSIGNED DEFAULT "0" NOT NULL;

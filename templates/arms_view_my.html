@@ -1,0 +1,72 @@
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+  <tr>
+    <th colspan="4" align="center"><{$arms_lang.my_articals}></td>
+  </tr>
+  <tr>
+    <td colspan="4" class="odd"><{$arms_lang.my_info}></td>
+  </tr>
+<{section name=arts loop=$arms_articals}>
+  <tr>
+    <td width="50%" class="even">
+      <a href="<{$xoops_url}>/modules/arms/view.php?w=art&idx=<{$arms_articals[arts].art_id}>"><{$arms_articals[arts].art_title}></a>
+    </td>
+    <td width="20%" class="odd" align="center">
+    <{if $arms_articals[arts].perms.can_edit_art}>
+      <a href="<{$xoops_url}>/modules/arms/forms.php?w=editart&idx=<{$arms_articals[arts].art_id}>"><{$arms_lang.edit}></a>
+    <{else}>
+      &nbsp;
+    <{/if}>
+    </td>
+    <td width="20%" class="even" align="center">
+    <{if $arms_articals[arts].perms.can_delete_art}>
+      <a href="<{$xoops_url}>/modules/arms/forms.php?w=deleteart&idx=<{$arms_articals[arts].art_id}>"><{$arms_lang.delete}></a>
+    <{else}>
+      &nbsp;
+    <{/if}>
+    </td>
+    <td width="10%" class="odd" align="center">
+    <{if $arms_articals[arts].perms.can_activate_art}>
+      <{if $arms_articals[arts].art_activated}>
+        <a href="<{$xoops_url}>/modules/arms/forms.php?w=deactivateart&idx=<{$arms_articals[arts].art_id}>"><img src="<{$xoops_url}>/modules/arms/images/options/deactivate.gif" alt="<{$arms_lang.deactivate}>"></a>
+      <{else}>
+        <a href="<{$xoops_url}>/modules/arms/forms.php?w=activateart&idx=<{$arms_articals[arts].art_id}>"><img src="<{$xoops_url}>/modules/arms/images/options/activate.gif" alt="<{$arms_lang.activate}>"></a>
+      <{/if}>
+    <{else}>
+      <{if $arms_articals[arts].art_activated}>
+        <img src="<{$xoops_url}>/modules/arms/images/options/deactivate.gif" alt="<{$arms_lang.activated}>">
+      <{else}>
+        <img src="<{$xoops_url}>/modules/arms/images/options/deactivate.gif" alt="<{$arms_lang.deactivated}>">
+      <{/if}>
+    <{/if}>
+    </td>
+  </tr>
+<{/section}>
+  <tr>
+    <form name="form_add_art" method="post" action="forms.php?w=addart">
+      <td colspan="4" align="center" class="odd">
+        <br><input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.add_artical}>"><br>&nbsp;
+      </td>
+    </form>
+  </tr>
+</table>
+<br><br>
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+  <tr>
+    <th align="center" colspan="3"><{$arms_lang.with_perm}></th>
+  </tr>
+  <tr>
+    <td class="odd" colspan="3"><{$arms_lang.with_perm_info}></td>
+  </tr>
+  <tr>
+    <th width="60%" align="center"><{$arms_lang.artical}></th>
+    <th width="20%">&nbsp;</th>
+    <th width="20%">&nbsp;</th>
+  </tr>
+<{section name=extra loop=$arms_extra}>
+  <tr>
+    <td class="even"><{$arms_extra[extra].art_title}></td>
+    <td class="odd" align="center"><a href="<{$xoops_url}>/modules/arms/view.php?w=art&idx=<{$arms_extra[extra].art_id}>"><{$arms_lang.view}></a></td>
+    <td class="even" align="center"><a href="<{$xoops_url}>/modules/arms/forms.php?w=editart&idx=<{$arms_extra[extra].art_id}>"><{$arms_lang.edit}></a></td>
+  </tr>
+<{/section}>
+</table>

@@ -1,0 +1,10 @@
+<ul class="menu_list">
+<{section name=cats loop=$block.arms_cats}>
+  <li><span class="text_on_black"><{$block.arms_cats[cats].title}></span></li>
+<{section name=secs loop=$block.arms_cats[cats].secs}>
+  <{if $block.arms_cats[cats].secs[secs].art_count > 0}>
+    <li>&nbsp;&nbsp;<a href="<{$xoops_url}>/modules/arms/view.php?w=sec&idx=<{$block.arms_cats[cats].secs[secs].id}>" class="menu_link"><{$block.arms_cats[cats].secs[secs].title}> (<{$block.arms_cats[cats].secs[secs].art_count}>)</a></li>
+  <{/if}>
+<{/section}>
+<{/section}>
+</ul>

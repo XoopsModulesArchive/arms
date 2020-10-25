@@ -1,0 +1,171 @@
+<b><a href="<{$xoops_url}>"><{$xoops_sitename}></a> :: <a href="<{$xoops_url}>/modules/arms"><{$xoops_pagetitle}></a> :: <{$arms_section.sec_title}></b>
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+  <tr>
+    <th align="center" colspan="2"><{$arms_section.sec_title}></th>
+  </tr>
+  <tr>
+    <td rowspan="2" width="25%" class="even" style="vertical-align: middle; text-align: center;">
+    <{if $arms_section.sec_image eq ''}>
+      &nbsp;
+    <{else}>
+      <img src="<{$xoops_url}>/modules/arms/images/section/<{$arms_section.sec_image}>" alt="<{$arms_section.sec_title}>">
+    <{/if}>
+    </td>
+    <td class="odd" width="75%"><b><{$arms_lang.desc}>: </b><{$arms_section.sec_desc}></td>
+  </tr>
+  <tr>
+    <td class="odd"><b><{$arms_lang.articals}>: </b> <{$arms_articals_count}></span></td>
+  </tr>
+<!-- Articals table -->
+  <tr>
+    <td class="odd" colspan="2"></td>
+  </tr>
+<{section name=arts loop=$arms_articals}>
+  <tr>
+    <th align="center" colspan="2"><a href="<{$xoops_url}>/modules/arms/view.php?w=art&idx=<{$arms_articals[arts].id}>&page=1"><{$arms_articals[arts].title}></a>
+  </tr>
+  <tr>
+    <td width="25%" class="even"><{$arms_lang.desc}>:</td>
+    <td width="75%" class="odd"><{$arms_articals[arts].desc}></td>
+  </tr>
+  <tr>
+    <td width="25%" class="even"><{$arms_lang.author}>:</td>
+    <td width="75%" class="odd">
+      <a href="<{$xoops_url}>/userinfo.php?uid=<{$arms_articals[arts].user_id}>">
+        <{$arms_articals[arts].user_name}>
+      </a>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" class="even"><{$arms_lang.posttime}>:</td>
+    <td width="75%" class="odd">
+      <{$arms_articals[arts].posttime}>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" class="even"><{$arms_lang.level}>:</td>
+    <td width="75%" class="odd">
+      <a href="<{$xoops_url}>/modules/arms/view.php?w=level&idx=<{$arms_articals[arts].level_id}>"><{$arms_articals[arts].level_title}></a>
+    </td>
+  </tr>
+  <tr>
+    <td width="25%" class="even"><{$arms_lang.lessons}>:</td>
+    <td width="75%" class="odd"><{$arms_articals[arts].pages}></td>
+  </tr>
+<{if $arms_config.rating_enabled}>
+  <{if $arms_config.rating_only_formed and ($arms_articals[arts].rate < 1)}>
+    <{if $xoops_isuser}>
+    <tr>
+      <td width="25%" class="even"><{$arms_lang.rate}>:</td>
+      <td width="75%" class="odd">
+        <a href="<{$xoops_url}>/modules/arms/view.php?w=art&idx=<{$arms_articals[arts].id}>&page=1#rate"><{$arms_lang.rate_art}></a>
+      </td>
+    </tr>
+    <{/if}>
+  <{else}>
+  <tr>
+    <td width="25%" class="even"><{$arms_lang.rate}>:</td>
+    <td width="75%" class="odd">
+      <{if $arms_articals[arts].rate eq 1}>
+        <{$arms_lang.rate_1}> (1) [ <a href="<{$xoops_url}>/modules/arms/view.php?w=votelog&idx=<{$arms_articals[arts].id}>"><{$arms_lang.votelog}></a> ]
+      <{elseif $arms_articals[arts].rate eq 2}>
+        <{$arms_lang.rate_2}> (2) [ <a href="<{$xoops_url}>/modules/arms/view.php?w=votelog&idx=<{$arms_articals[arts].id}>"><{$arms_lang.votelog}></a> ]
+      <{elseif $arms_articals[arts].rate eq 3}>
+        <{$arms_lang.rate_3}> (3) [ <a href="<{$xoops_url}>/modules/arms/view.php?w=votelog&idx=<{$arms_articals[arts].id}>"><{$arms_lang.votelog}></a> ]
+      <{elseif $arms_articals[arts].rate eq 4}>
+        <{$arms_lang.rate_4}> (4) [ <a href="<{$xoops_url}>/modules/arms/view.php?w=votelog&idx=<{$arms_articals[arts].id}>"><{$arms_lang.votelog}></a> ]
+      <{elseif $arms_articals[arts].rate eq 5}>
+        <{$arms_lang.rate_5}> (5) [ <a href="<{$xoops_url}>/modules/arms/view.php?w=votelog&idx=<{$arms_articals[arts].id}>"><{$arms_lang.votelog}></a> ]
+      <{else}>
+        <{$arms_lang.no_rate}>
+      <{/if}>
+    </td>
+  </tr>
+  <{/if}>
+<{/if}>
+<{if $arms_articals[arts].updatecount > 0}>
+  <tr>
+    <td width="25%" class="even"><{$arms_lang.updates}>:</td>
+    <td width="75%" class="odd"><{$arms_articals[arts].updatecount}></td>
+  </tr>
+<{/if}>
+  <{if $arms_articals[arts].perms.can_edit_art or $arms_articals[arts].perms.can_delete_art or $arms_articals[arts].perms.can_activate_art or $arms_articals[arts].perms.can_view_uip}>
+  <tr>
+    <td width="25%" class="even"><{$arms_lang.options}>:</td>
+    <td width="75%" class="odd" align="left">
+    <{if $arms_articals[arts].perms.can_edit_art}>
+      <a href="<{$xoops_url}>/modules/arms/forms.php?w=editart&idx=<{$arms_articals[arts].id}>"><img src="<{$xoops_url}>/modules/arms/images/options/edit.gif" alt="<{$arms_lang.edit}>"></a>
+    <{/if}>
+    <{if $arms_articals[arts].perms.can_delete_art}>
+      <a href="<{$xoops_url}>/modules/arms/forms.php?w=deleteart&idx=<{$arms_articals[arts].id}>"><img src="<{$xoops_url}>/modules/arms/images/options/delete.gif" alt="<{$arms_lang.delete}>"></a>
+    <{/if}>
+    <{if $arms_articals[arts].perms.can_view_uip}>
+      <img src="<{$xoops_url}>/modules/arms/images/options/ip.gif" alt="<{$arms_lang.ip}>: <{$arms_articals[arts].uip}>">
+    <{/if}>
+    <{if $arms_articals[arts].perms.can_activate_art}>
+      <{if $arms_articals[arts].is_activated}>
+        <a href="<{$xoops_url}>/modules/arms/forms.php?w=deactivateart&idx=<{$arms_articals[arts].id}>"><img src="<{$xoops_url}>/modules/arms/images/options/deactivate.gif" alt="<{$arms_lang.deactivate}>"></a>
+      <{else}>
+        <a href="<{$xoops_url}>/modules/arms/forms.php?w=activateart&idx=<{$arms_articals[arts].id}>"><img src="<{$xoops_url}>/modules/arms/images/options/activate.gif" alt="<{$arms_lang.activate}>"></a>
+      <{/if}>
+    <{/if}>
+    </td>
+  </tr>
+  <{/if}>
+    <td colspan="2" align="center" class="odd"><a href="#top"><{$arms_lang.to_top}></a></td>
+  </tr>
+  <{/section}>
+<!-- Navigation -->
+  <tr>
+    <th colspan="2" align="center"><{$arms_lang.navigation}></th>
+  </tr>
+<{if $arms_jt_count > 0}>
+  <form name="jump_to" method="post" action="posting.php?w=jumptosec&on=sec&idx=<{$arms_section.sec_id}>">
+    <tr>
+      <td class="even" style="vertical-align: middle"><{$arms_lang.jump_to_sec}>:</td>
+      <td class="odd">
+        <select name="jump_to_sec">
+        <{section name=jump_to loop=$arms_jump_to}>
+          <option><{$arms_jump_to[jump_to].title}></option>
+        <{/section}>
+        </select>
+        <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.go}>">
+      </td>
+    </tr>
+  </form>
+<{/if}>
+  <tr height="20" style="vertical-align: middle;">
+    <td width="25%" class="even"><{$arms_lang.lessons}>:</td>
+    <td width="75%" class="odd">
+    <{section name=pages loop=$arms_section_pages}>
+      <{if $arms_section_pages[pages].is_current}>
+      (<{$arms_section_pages[pages].page_num}>)
+      <{else}>
+        <a href="<{$xoops_url}>/modules/arms/view.php?w=sec&idx=<{$arms_section.sec_id}>&page=<{$arms_section_pages[pages].page_num}>">
+        <{$arms_section_pages[pages].page_num}></a>
+      <{/if}>
+      <{if not $arms_section_pages[pages].is_last}>,&nbsp;<{/if}>
+    <{/section}>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" class="even">
+    <{if not $arms_current_page.is_first}>
+      <a href="<{$arms_current_page.first_link}>">
+        <img src="<{$xoops_url}>/modules/arms/images/navigation/first.gif" alt="<{$arms_lang.first}>">
+      </a>
+      <a href="<{$arms_current_page.prev_link}>">
+        <img src="<{$xoops_url}>/modules/arms/images/navigation/prev.gif" alt="<{$arms_lang.previous}>">
+      </a>
+    <{/if}>
+    <{if not $arms_current_page.is_last}>
+      <a href="<{$arms_current_page.next_link}>">
+        <img src="<{$xoops_url}>/modules/arms/images/navigation/next.gif" alt="<{$arms_lang.next}>">
+      </a>
+      <a href="<{$arms_current_page.last_link}>">
+        <img src="<{$xoops_url}>/modules/arms/images/navigation/last.gif" alt="<{$arms_lang.last}>">
+      </a>
+    <{/if}>
+    </td>
+  </tr>
+</table>

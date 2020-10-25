@@ -1,0 +1,63 @@
+<table class="outer" width="100%" border="0" cellspacing="1">
+  <tr>
+    <td>
+      <a href="<{$xoops_url}>"><{$arms_lang.your_site}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/admin"><{$arms_lang.xoops_admin}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/modules/arms/admin"><{$arms_lang.arms_admin}></a>&nbsp;::&nbsp;
+      <{$arms_lang.mods_main}>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <table class="outer" width="90%" cellspacing="1" align="center">
+        <tr>
+          <th width="40%"><{$arms_lang.section}></th>
+          <th width="40%"><{$arms_lang.moderator}></th>
+          <th width="20%">&nbsp;</th>
+        </tr>
+      <{section name=secs loop=$arms_mods}>
+        <{section name=mods loop=$arms_mods[secs].mod}>
+        <tr>
+          <td class="even"><a href="<{$xoops_url}>/modules/arms/admin/forms.php?w=editsec&idx=<{$arms_mods[secs].sec_id}>"><{$arms_mods[secs].sec_title}></td>
+          <td class="odd"><a href="<{$xoops_url}>/userinfo.php?uid=<{$arms_mods[secs].mod[mods].uid}>"><{$arms_mods[secs].mod[mods].username}></td>
+          <td class="even"><a href="<{$xoops_url}>/modules/arms/admin/posting.php?w=deletemod&uid=<{$arms_mods[secs].mod[mods].uid}>&secid=<{$arms_mods[secs].sec_id}>"><{$arms_lang.delete}></td>
+        <tr>
+        <{/section}>
+      <{/section}>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <form name="form_add_mod" method="post" action="posting.php?w=addmod">
+        <table class="outer" width="90%" cellspacing="1" align="center">
+          <tr>
+            <th align="center" colspan=2><{$arms_lang.add_mod}></th>
+          </tr>
+          <tr>
+            <td width="25%" class="even"><{$arms_lang.username}> (*):</td>
+            <td width="75%" class="odd">
+              <input name="mod_user" type="text" id="mod_user" size="35">
+            </td>
+          </tr>
+          <tr>
+            <td width="25%" class="even"><{$arms_lang.section}> (*):</td>
+            <td width="75%" class="odd">
+              <select name="mod_section">
+              <{section name=sel_sec loop=$arms_mods}>
+                <option><{$arms_mods[sel_sec].sec_title}></option>
+              <{/section}>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td align="center" colspan="2">
+              <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.submit}>">
+              <input name="btn_reset" type="reset" id="btn_reset" value="<{$arms_lang.reset}>">
+            </td>
+          </tr>
+        </table>
+      </form>
+    </td>
+  </tr>
+</table>

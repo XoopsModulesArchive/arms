@@ -1,0 +1,61 @@
+<table class="outer" width="100%" border="0" cellspacing="1">
+  <tr>
+    <td colspan="5">
+      <a href="<{$xoops_url}>"><{$arms_lang.your_site}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/admin"><{$arms_lang.xoops_admin}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/modules/arms/admin"><{$arms_lang.arms_admin}></a>&nbsp;::&nbsp;
+      <{$arms_lang.display_arts}>
+    </td>
+  </tr>
+  <tr>
+    <th colspan="5" align="center"><{$arms_lang.display_arts}></th>
+  </tr>
+  <tr>
+    <td colspan="5" align="center" class="even">
+      <form name="form_display" method="post" action="index.php?w=displayart">
+        <input name="display_value" type="text" id="display_value" size="45">&nbsp;
+        <select name="display_what">
+          <option selected><{$arms_lang.opt_art_title}></option>
+          <option><{$arms_lang.opt_sec_name}></option>
+          <option><{$arms_lang.opt_cat_name}></option>
+          <option><{$arms_lang.opt_author}></option>
+          <option><{$arms_lang.where_part}></option>
+        </select>&nbsp;
+        <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.go}>">
+      </form>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="5" class="odd"><{$arms_lang.display_info}></td>
+  </tr>
+  <tr>
+    <th align="center" colspan="5"><{$arms_lang.articals}></th>
+  </tr>
+  <{section name=arts loop=$arms_arts}>
+  <tr>
+    <td width="40%" class="even">
+      <a href="<{$xoops_url}>/modules/arms/view.php?w=art&idx=<{$arms_arts[arts].id}>"><{$arms_arts[arts].title}></a>
+    </td>
+    <td width="20%" class="odd" align="center">
+      <a href="<{$xoops_url}>/modules/arms/forms.php?w=editart&idx=<{$arms_arts[arts].id}>"><{$arms_lang.edit}></a>
+    </td>
+    <td width="20%" class="even" align="center">
+      <a href="<{$xoops_url}>/modules/arms/forms.php?w=deleteart&idx=<{$arms_arts[arts].id}>"><{$arms_lang.delete}></a>
+    </td>
+    <td width="10%" class="odd" align="center">
+      <{if $arms_arts[arts].onhold eq 0}>
+        &nbsp;
+      <{else}>
+        <span style="color: red"><b><{$arms_lang.onhold}></b></span>
+      <{/if}>
+    </td>
+    <td width="10%" class="even" align="center">
+      <{if $arms_arts[arts].activated eq 0}>
+        <a href="<{$xoops_url}>/modules/arms/forms.php?w=activateart&idx=<{$arms_arts[arts].id}>"><img src="<{$xoops_url}>/modules/arms/images/options/activate.gif" alt="<{$arms_lang.activate}>"></a>
+      <{else}>
+        <a href="<{$xoops_url}>/modules/arms/forms.php?w=deactivateart&idx=<{$arms_arts[arts].id}>"><img src="<{$xoops_url}>/modules/arms/images/options/deactivate.gif" alt="<{$arms_lang.deactivate}>"></a>
+      <{/if}>
+    </td>
+  </tr>
+  <{/section}>
+</table>

@@ -1,0 +1,15 @@
+<table cellspacing="0" cellpadding="0" class="item">
+<{section name=arts loop=$block.arms_arts}>
+  <tr>
+    <td width="50%" class="even">
+      <a href="<{$xoops_url}>/modules/arms/view.php?w=sec&idx=<{$block.arms_arts[arts].sec_id}>"><{$block.arms_arts[arts].sec_title}></a> :: <a href="<{$xoops_url}>/modules/arms/view.php?w=art&idx=<{$block.arms_arts[arts].id}>"><{$block.arms_arts[arts].title}></a>
+    </td>
+    <td width="25%" class="odd" align="center">
+      <a href="<{$xoops_url}>/userinfo.php?uid=<{$block.arms_arts[arts].uid}>"><{$block.arms_arts[arts].uname}></a>
+    </td>
+    <td width="25%" class="even" align="center">
+      <{$block.arms_arts[arts].posttime}>
+    </td>
+  </tr>
+<{/section}>
+</table>

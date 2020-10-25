@@ -1,0 +1,16 @@
+ArMS KNOWNBUGS.txt
+==================
+
+[ ACTIVE ] Delete Moderator return SQL error... When I copy query to phpMyAdmin
+           (v 2.5.3) it is executed without any errors
+[ ACTIVE ] art_views and page_views db field is not updated. I always get SQL
+           error. Same thing with previous bug... Without this field inc View
+           Popular is useless. (view.php - view artical)
+           
+[ FIXED ] In some parts of module I didn`t checked user permissions...
+[ FIXED ] Section Move Up / Move Down wont work. It reports SQL error, but when
+          I copy query to phpMyAdmin it is executed without any problems...
+[ FIXED ] Page Move Up / Move Down options are not implemented
+[ FIXED ] Delete Artical option is not implemented
+[ FIXED ] My articals page is not finished.
+[ FIXED ] Design is different in some parts of module... Made to look like NEWS module

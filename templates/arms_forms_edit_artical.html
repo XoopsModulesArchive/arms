@@ -1,0 +1,332 @@
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+  <tr>
+    <th align="center"><{$arms_lang.edit_artical}></th>
+  </tr>
+  <tr>
+    <td class="even"><a href="#data"><{$arms_lang.artical_data}></a></td>
+  </tr>
+  <tr>
+    <td class="odd"><a href="#pages"><{$arms_lang.lessons}></a></td>
+  </tr>
+  <tr>
+    <td class="even">
+    <{if $user_perms.can_view_onhold}>
+      <a href="#onhold"><{$arms_lang.onhold}></a>
+    <{else}>
+      <{$arms_lang.onhold}> [ <{$arms_lang.restricted}> ]
+    <{/if}>
+    </td>
+  </tr>
+  <tr>
+    <td class="odd">
+    <{if $user_perms.can_view_perms}>
+      <a href="#perms"><{$arms_lang.permissions}></a>
+    <{else}>
+      <{$arms_lang.permissions}> [ <{$arms_lang.restricted}> ]
+    <{/if}>
+    </td>
+  </tr>
+  <tr>
+    <td class="even">
+    <{if $user_perms.can_view_perms}>
+      <a href="#add_perm"><{$arms_lang.add_permission}></a>
+    <{else}>
+      <{$arms_lang.add_permission}> [ <{$arms_lang.restricted}> ]
+    <{/if}>
+    </td>
+  </tr>
+  <tr>
+    <td class="odd">
+    <{if $user_perms.can_view_cross}>
+      <a href="#cross"><{$arms_lang.cross_sections}></a>
+    <{else}>
+      <{$arms_lang.cross_sections}> [ <{$arms_lang.restricted}> ]
+    <{/if}>
+    </td>
+  </tr>
+</table>
+<br>
+<br><a name="data"></a>
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+  <tr>
+    <th align="center" colspan="2"><{$arms_lang.artical_data}></th>
+  </tr>
+  <tr>
+    <td class="even" width="25%"><{$arms_lang.title}>:</td>
+    <td class="odd" width="75%"><b><{$arms_artical.art_title}></b></td>
+  </tr>
+  <tr>
+    <td class="even" width="25%"><{$arms_lang.desc}>:</td>
+    <td class="odd" width="75%"><{$arms_artical.art_desc}></td>
+  </tr>
+  <tr>
+    <td class="even" width="25%"><{$arms_lang.section}>:</td>
+    <td class="odd" width="75%">
+      <a href="<{$xoops_url}>/modules/arms/view.php?w=sec&idx=<{$arms_section.sec_id}>"><{$arms_section.sec_title}></a>
+    </td>
+  </tr>
+  <tr>
+    <td class="even" width="25%"><{$arms_lang.level}>:</td>
+    <td class="odd" width="75%">
+      <a href="<{$xoops_url}>/modules/arms/view.php?w=level&idx=<{$arms_level.level_id}>"><{$arms_level.level_name}></a>
+    </td>
+  </tr>
+  <tr>
+    <td class="even" width="25%"><{$arms_lang.author}>:</td>
+    <td class="odd" width="75%">
+      <a href="<{$xoops_url}>/userinfo.php?uid=<{$arms_user.uid}>"><{$arms_user.uname}></a>
+    </td>
+  </tr>
+<{if $user_perms.can_edit_art}>
+  <tr>
+    <form name="form_edit_art" method="post" action="forms.php?w=editartdata&idx=<{$arms_artical.art_id}>">
+      <td align="center" colspan="2" class="odd">
+        <br><input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.edit_artical_data}>"><br>&nbsp;
+      </td>
+    </form>
+  </tr>
+<{/if}>
+</table>
+<br>
+<br><a name="pages"></a>
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+  <tr>
+    <th align="center"><{$arms_lang.lessons}></th>
+  </tr>
+  <tr>
+    <td class="odd"><{$arms_lang.pages_info}></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <table class="outer" width="95%" border="0" cellspacing="1">
+        <form name="form_reorder_pages" method="post" action="posting.php?w=reorderpages&idx=<{$arms_artical.art_id}>">
+          <tr>
+            <th align="center" width="40%"><{$arms_lang.title}></th>
+            <th width="20%">&nbsp;</th>
+            <th width="20%">&nbsp;</th>
+            <th align="center" width="20%"><{$arms_lang.order}></th>
+          </tr>
+        <{section name=pages loop=$arms_pages}>
+          <tr>
+            <td class="even">
+              <a href="<{$xoops_url}>/modules/arms/forms.php?w=editpage&idx=<{$arms_pages[pages].page_id}>"><{$arms_pages[pages].page_title}></a>
+            </td>
+            <td align="center" class="odd">
+            <{if $user_perms.can_edit_page}>
+              <a href="<{$xoops_url}>/modules/arms/forms.php?w=editpage&idx=<{$arms_pages[pages].page_id}>"><{$arms_lang.edit}></a>
+            <{else}>
+              &nbsp;
+            <{/if}>
+            </td>
+            <td align="center" class="even">
+            <{if $user_perms.can_delete_page}>
+              <a href="<{$xoops_url}>/modules/arms/forms.php?w=deletepage&idx=<{$arms_pages[pages].page_id}>"><{$arms_lang.delete}></a>
+            <{else}>
+              &nbsp;
+            <{/if}>
+            </td>
+            <td align="center" class="odd">
+            <{if $user_perms.can_edit_page}>
+              <input type="text" name="pageorder<{$arms_pages[pages].page_id}>" size="3" maxlength="5" value="<{$arms_pages[pages].page_order}>">
+            <{else}>
+              <{$arms_pages[pages].page_order}>
+            <{/if}>
+            </td>
+          </tr>
+        <{/section}>
+        <{if $user_perms.can_edit_page}>
+          <tr>
+            <td align="center" colspan="4" class="odd">
+              <input name="arms_confirm" type="checkbox" id="arms_confirm" value="confirmed"><{$arms_lang.confirm}>
+              <br>
+              <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.reorder_pages}>">
+              <input name="btn_reset" type="reset" id="btn_reset" value="<{$arms_lang.reset}>">
+            </td>
+          </tr>
+        <{/if}>
+        </form>
+      </table>
+    </td>
+  </tr>
+<{if $user_perms.can_add_page}>
+  <tr>
+    <form name="form_add_perm" method="post" action="forms.php?w=addpage&idx=<{$arms_artical.art_id}>">
+      <td align="center" class="odd">
+        <br><input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.add_page}>"><br>&nbsp;
+      </td>
+    </form>
+  </tr>
+<{/if}>
+</table>
+<{if $user_perms.can_view_onhold}>
+<br>
+<br><a name="onhold"></a>
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+  <tr>
+    <th align="center"><{$arms_lang.onhold}></th>
+  </tr>
+  <tr>
+    <td class="odd"><{$arms_lang.onhold_info}></td>
+  </tr>
+  <form name="form_on_hold" method="post" action="forms.php?w=changeonhold&idx=<{$arms_artical.art_id}>">
+    <tr>
+      <td class="odd" align="center">
+      <{if $arms_artical.art_onhold eq 1}>
+        <span style="color: red"><b><{$arms_lang.is_onhold}></b></span>
+      <{else}>
+        <b><{$arms_lang.isnt_onhold}></b>
+      <{/if}>
+        <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.change}>">
+      </td>
+    </tr>
+  </form>
+</table>
+<{/if}>
+<{if $user_perms.can_view_perms}>
+<br>
+<br><a name="perms"></a>
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+  <tr>
+    <th align="center"><{$arms_lang.permissions}></th>
+  </tr>
+  <tr>
+    <td class="odd"><{$arms_lang.permissions_info}></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <table class="outer" width="95%" border="0" cellspacing="1">
+        <tr>
+          <th width="35%"><{$arms_lang.username}></th>
+          <th align="center" width="15%"><{$arms_lang.can_edit}></th>
+          <th align="center" width="15%"><{$arms_lang.can_add}></th>
+          <th align="center" width="15%"><{$arms_lang.can_delete}></th>
+          <th align="center" width="20%">&nbsp;</th>
+        </tr>
+    <{if $arms_perms_count > 0}>
+      <form name="form_update_perms" method="post" action="posting.php?w=updateperms&idx=<{$arms_artical.art_id}>">
+    <{/if}>
+      <{section name=perm loop=$arms_permissions}>
+        <tr>
+          <td class="even"><a href="<{$xoops_url}>/userinfo.php?uid=<{$arms_permissions[perm].uid}>"><{$arms_permissions[perm].uname}></a></td>
+          <td class="odd" align="center">
+          <{if $arms_permissions[perm].can_edit eq 1}>
+            <input name="can_edit<{$arms_permissions[perm].pid}>" type="checkbox" value="checked" checked>
+          <{else}>
+            <input name="can_edit<{$arms_permissions[perm].pid}>" type="checkbox" value="checked">
+          <{/if}>
+          </td>
+          <td class="even" align="center">
+          <{if $arms_permissions[perm].can_add eq 1}>
+            <input name="can_add<{$arms_permissions[perm].pid}>" type="checkbox" value="checked" checked>
+          <{else}>
+            <input name="can_add<{$arms_permissions[perm].pid}>" type="checkbox" value="checked">
+          <{/if}>
+          </td>
+          <td class="odd" align="center">
+          <{if $arms_permissions[perm].can_delete eq 1}>
+            <input name="can_delete<{$arms_permissions[perm].pid}>" type="checkbox" value="checked" checked>
+          <{else}>
+            <input name="can_delete<{$arms_permissions[perm].pid}>" type="checkbox" value="checked">
+          <{/if}>
+          </td>
+          <td class="even" align="center"><a href="<{$xoops_url}>/modules/arms/forms.php?w=deleteperm&idx=<{$arms_permissions[perm].pid}>"><{$arms_lang.delete}></a></td>
+        </tr>
+      <{/section}>
+      <{if $arms_perms_count > 0}>
+        <tr>
+          <td align="center" class="odd" colspan="5">
+            <input name="arms_confirm" type="checkbox" id="arms_confirm" value="confirmed"><{$arms_lang.confirm}>
+            <br>
+            <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.update_perms}>">
+            <input name="btn_reset" type="reset" id="btn_reset" value="<{$arms_lang.reset}>">
+          </td>
+        </tr>
+        </form> <!-- End of update permissions form -->
+      <{/if}>
+      </table>
+    </td>
+  </tr>
+<{if $arms_perms_count > 0}>
+  <tr>
+    <form name="form_add_perm" method="post" action="forms.php?w=clearperms&idx=<{$arms_artical.art_id}>">
+      <td align="center" class="odd">
+        <br><input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.clear_permissions}>"><br>&nbsp;
+      </td>
+    </form>
+  </tr>
+<{/if}>
+</table>
+<br>
+<br><a name="add_perm"></a>
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+  <tr>
+    <th align="center"><{$arms_lang.add_permission}></th>
+  </tr>
+<{if $arms_max_perms}>
+  <tr>
+    <td class="odd" align="center"><{$arms_lang.perms_limit_info}></td>
+  </tr>
+<{else}>
+  <form name="form_add_perm" method="post" action="posting.php?w=addperm&idx=<{$arms_artical.art_id}>">
+    <tr>
+      <td class="odd" align="center">
+        <br>
+        <b><{$arms_lang.username}> (*):</b> <input name="user_name" type="text"size="35"><br>
+        <b><{$arms_lang.can_edit_full}>:</b> <input name="can_edit" type="checkbox" value="checked" checked>&nbsp;
+        <b><{$arms_lang.can_add_full}>:</b> <input name="can_add" type="checkbox" value="checked">&nbsp;
+        <b><{$arms_lang.can_delete_full}>:</b> <input name="can_delete" type="checkbox" value="checked">
+        <br>&nbsp;
+      </td>
+    </tr>
+    <tr>
+      <td align="center" class="odd">
+        <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.submit}>">
+        <input name="btn_reset" type="reset" id="btn_reset" value="<{$arms_lang.reset}>">
+      </td>
+    </tr>
+  </form>
+<{/if}>
+</table>
+<{/if}>
+<{if ($arms_cross_count > 0) and ($user_perms.can_view_cross)}>
+<br>
+<br><a name="cross"></a>
+<table width="100%" class="item" cellspacing="0" cellpadding="0">
+  <form name="form_update_cross" method="post" action="posting.php?w=updatecross&idx=<{$arms_artical.art_id}>">
+    <tr>
+      <th align="center"><{$arms_lang.cross_sections}></th>
+    </tr>
+    <tr>
+      <td class="odd"><{$arms_lang.cross_info}></td>
+    </tr>
+    <tr>
+      <td align="center">
+        <table class="outer" width="60%" border="0" cellspacing="1">
+          <tr>
+            <th align="center"><{$arms_lang.crossed}> / <{$arms_lang.section}></th>
+          </tr>
+        <{section name=cross loop=$arms_cross}>
+          <tr>
+            <td class="<{cycle values="even,odd}>">
+              <{if $arms_cross[cross].crossed eq 1}>
+                <input name="cross_sec<{$arms_cross[cross].id}>" type="checkbox" value="checked" checked> <{$arms_cross[cross].title}>
+              <{else}>
+                <input name="cross_sec<{$arms_cross[cross].id}>" type="checkbox" value="checked"> <{$arms_cross[cross].title}>
+              <{/if}>
+            </td>
+          </tr>
+        <{/section}>
+          <tr>
+            <td class="odd" align="center">
+              <input name="arms_confirm" type="checkbox" id="arms_confirm" value="confirmed"><{$arms_lang.confirm}>
+              <br>
+              <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.update_cross}>">
+              <input name="btn_reset" type="reset" id="btn_reset" value="<{$arms_lang.reset}>">
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </form>
+</table>
+<{/if}>

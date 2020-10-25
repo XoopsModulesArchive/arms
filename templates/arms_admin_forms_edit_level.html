@@ -1,0 +1,60 @@
+<table class="outer" width="100%" border="0" cellspacing="1">
+  <tr>
+    <td>
+      <a href="<{$xoops_url}>"><{$arms_lang.your_site}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/admin"><{$arms_lang.xoops_admin}></a>&nbsp;::&nbsp;
+      <a href="<{$xoops_url}>/modules/arms/admin"><{$arms_lang.arms_admin}></a>&nbsp;::&nbsp;
+      <{$arms_lang.edit_level}>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <form name="form_edit_level" method="post" action="posting.php?w=editlevel&idx=<{$arms_level.level_id}>">
+        <table class="outer" width="90%" cellspacing="1">
+          <tr>
+            <th align="center" colspan=2><{$arms_lang.edit_level}></th>
+          </tr>
+          <tr>
+            <td class="even" width="25%"><{$arms_lang.edit_level}></td>
+            <td class="odd" width="75%"><{$arms_level.level_name}></td>
+          </tr>
+          <tr>
+            <td class="even" width="25%"><{$arms_lang.title}> (*):</td>
+            <td class="odd" width="75%">
+              <input name="level_title" type="text" id="level_title" size="35" value="<{$arms_level.level_name}>">
+            </td>
+          </tr>
+          <tr>
+            <td class="even" width="25%"><{$arms_lang.desc}> (*):</td>
+            <td class="odd" width="75%">
+              <textarea name="level_desc" rows="8" cols="30" id="level_desc"><{$arms_level.level_desc}></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td width="25%" class="even"><{$arms_lang.image}>:</td>
+            <td width="75%" class="odd">
+              <select name="level_image">
+                <{if $arms_level.level_image eq ''}>
+                  <option selected>- - - - -</option>
+                <{else}>
+                  <option>- - - - -</option>
+                <{/if}>
+                <{section name=imgs loop=$arms_images}>
+                  <{if $arms_images[imgs].file_name eq $arms_level.level_image}>
+                  <option selected><{$arms_images[imgs].file_name}></option>
+                  <{else}>
+                  <option><{$arms_images[imgs].file_name}></option>
+                  <{/if}>
+                <{/section}>
+              </select>
+            </td>
+          </tr>
+          <td align="center" colspan="2">
+            <input name="btn_submit" type="submit" id="btn_submit" value="<{$arms_lang.submit}>">
+            <input name="btn_reset" type="reset" id="btn_reset" value="<{$arms_lang.reset}>">
+          </td>
+        </table>
+      </form>
+    </td>
+  </tr>
+</table>
